@@ -4,17 +4,31 @@
  */
 package view;
 
+
+
+import javax.swing.DefaultListModel;
+import model.Kert;
+import model.Noveny;
+
 /**
  *
  * @author g
  */
 public class GuiNezet extends javax.swing.JFrame {
-
+    Kert kertem;
     /**
      * Creates new form GuiNezet
      */
     public GuiNezet() {
         initComponents();
+        kertem = new Kert();
+        kertem.frissit();
+        DefaultListModel dlm = new DefaultListModel<>();
+        
+        for (Noveny noveny : kertem.getNovenyek()) {
+            dlm.addElement(noveny.toString());
+        }
+        novList.setModel(dlm);
     }
 
     /**
@@ -26,17 +40,44 @@ public class GuiNezet extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        novList = new javax.swing.JList<>();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        novList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "vd", "sd" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(novList);
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -78,5 +119,10 @@ public class GuiNezet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> novList;
     // End of variables declaration//GEN-END:variables
 }

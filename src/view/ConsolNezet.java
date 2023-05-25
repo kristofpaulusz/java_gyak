@@ -18,8 +18,12 @@ public class ConsolNezet {
         kertem.hozzaad(new Noveny("aa04", "Pitypang2", 1210, 12));
         kertem.elad("aa01");
         kertem.elad("aa04");
-//        kertem.statisztika();
+        kertem.kiir();
+        kertem.statisztika();
         kertem = null;
-//        kertem.frissit();
+        kertem = new Kert();
+        System.out.println("");
+        kertem.frissit();
+        kertem.kiir();
     }
 }

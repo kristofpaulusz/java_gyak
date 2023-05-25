@@ -1,8 +1,10 @@
 package model;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -41,7 +43,24 @@ public class Kert{
     }
 
     public void frissit() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        try {
+            FileInputStream fIS = new FileInputStream("kert.bin");
+            ObjectInputStream oIS = new ObjectInputStream(fIS);
+            novenyek = (ArrayList<Noveny>) oIS.readObject();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Kert.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Kert.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Kert.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    
+    }
+
+    public ArrayList<Noveny> getNovenyek() {
+        return novenyek;
     }
     
     public void statisztika() {

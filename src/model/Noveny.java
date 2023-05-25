@@ -21,7 +21,7 @@ public class Noveny implements Serializable{
 
     @Override
     public String toString() {
-        return "Noveny{" + "id=" + id + ", nev=" + nev + ", ar=" + ar + ", kor=" + kor + '}';
+        return "id=" + id + ", nev=" + nev;
     }
 
     public void setId(String id) {
